@@ -1,3 +1,8 @@
+---
+description: Quick check of CI status for current branch or PR
+allowed-tools: Bash(git:*), Bash(gh:*)
+---
+
 # Check CI
 
 Quick check of CI status for the current branch or PR.

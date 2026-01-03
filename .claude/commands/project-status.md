@@ -1,3 +1,8 @@
+---
+description: Overview of GitHub project board and task status
+allowed-tools: Bash(gh:*), AskUserQuestion
+---
+
 # Project Status
 
 Overview of the GitHub project board and task status.

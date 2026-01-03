@@ -1,3 +1,8 @@
+---
+description: Set up shared Claude Code configuration in a new repository
+allowed-tools: Bash(git:*), Bash(ln:*), Bash(mkdir:*), Bash(touch:*), Read, Edit, AskUserQuestion
+---
+
 # Setup Claude
 
 Set up the shared Claude Code configuration in a new repository.

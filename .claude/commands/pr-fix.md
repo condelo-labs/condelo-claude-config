@@ -1,3 +1,8 @@
+---
+description: Review and implement Copilot review feedback on current PR
+allowed-tools: Bash(git:*), Bash(gh:*), Read, Edit, Write, Grep, Glob, TodoWrite, AskUserQuestion
+---
+
 # PR Fix
 
 Review and address Copilot review comments on the current PR.

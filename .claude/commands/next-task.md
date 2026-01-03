@@ -1,3 +1,8 @@
+---
+description: Pick up next task from GitHub, plan, implement, and create PR
+allowed-tools: Bash(git:*), Bash(gh:*), Bash(pnpm:*), Read, Edit, Write, Grep, Glob, TodoWrite, AskUserQuestion, Task
+---
+
 # Next Task
 
 Pick up the next task from GitHub and work through to completion.

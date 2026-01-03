@@ -1,3 +1,8 @@
+---
+description: Pull latest shared Claude Code configuration from submodule
+allowed-tools: Bash(git:*), Bash(cat:*), Read, AskUserQuestion
+---
+
 # Update Claude Config
 
 Pull the latest shared Claude Code configuration.

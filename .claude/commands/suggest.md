@@ -1,3 +1,8 @@
+---
+description: Analyze repo and suggest improvements, create GitHub issues
+allowed-tools: Bash(git:*), Bash(gh:*), Bash(pnpm:*), Read, Grep, Glob, AskUserQuestion, Task
+---
+
 # Suggest
 
 Analyze the repository and suggest improvements, features, and maintenance tasks.

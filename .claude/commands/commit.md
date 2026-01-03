@@ -1,3 +1,8 @@
+---
+description: Lint and commit changes with proper conventional commit format
+allowed-tools: Bash(git:*), Bash(pnpm:*), Read, AskUserQuestion
+---
+
 # Commit
 
 Lint code and create a well-formatted commit.

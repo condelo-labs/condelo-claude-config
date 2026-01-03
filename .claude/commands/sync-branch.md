@@ -1,3 +1,8 @@
+---
+description: Synchronize current branch with main via rebase or merge
+allowed-tools: Bash(git:*), Bash(pnpm:*), Read, AskUserQuestion
+---
+
 # Sync Branch
 
 Synchronize the current branch with main.

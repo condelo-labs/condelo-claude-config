@@ -1,3 +1,8 @@
+---
+description: Lint, commit, and push changes to remote repository
+allowed-tools: Bash(git:*), Bash(gh:*), Bash(pnpm:*), Read, AskUserQuestion
+---
+
 # Push
 
 Lint, commit, and push changes to the remote repository.

@@ -1,3 +1,8 @@
+---
+description: Ensure GitHub CLI is authenticated with required scopes
+allowed-tools: Bash(gh:*), AskUserQuestion
+---
+
 # GitHub Auth
 
 Ensure the GitHub CLI is properly authenticated with all required scopes.
