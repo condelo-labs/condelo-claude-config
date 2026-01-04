@@ -57,7 +57,61 @@ Inform the user the PR is ready for re-review.
 Once merged, suggest running `/next-task` to continue with the next task.
 
 ## Comment Resolution
-Try to resolve comments via the GitHub API:
+
+When addressing review comments, you MUST both reply AND resolve the thread.
+
+### Prerequisites: Install gh-pr-review extension
+The `gh-pr-review` extension provides simple commands for thread management:
 ```bash
-gh api repos/{owner}/{repo}/pulls/{pr}/comments/{id}/replies -f body="Fixed in <commit>"
+gh extension install agynio/gh-pr-review
+```
+
+### 1. List unresolved threads
+```bash
+gh pr-review threads list --unresolved -R {owner}/{repo} {pr_number}
+```
+
+Returns JSON array with thread metadata including `threadId`, `path`, `line`, and `isResolved`.
+
+### 2. Reply to the comment
+```bash
+gh api repos/{owner}/{repo}/pulls/{pr}/comments/{comment_id}/replies -f body="Fixed in <commit-sha>"
+```
+
+### 3. Resolve the thread
+```bash
+gh pr-review threads resolve --thread-id {thread_id} -R {owner}/{repo} {pr_number}
+```
+
+### Workflow Pattern
+1. Fetch all unresolved threads with `gh pr-review threads list --unresolved`
+2. For each comment you address:
+   - Reply to the comment with the fix location
+   - Match the comment to its thread by `path` and `line`
+   - Resolve the thread using `gh pr-review threads resolve`
+
+### Fallback: GraphQL (if extension unavailable)
+If the extension isn't available, use GraphQL directly:
+```bash
+# List threads
+gh api graphql -f query='
+  query($owner: String!, $repo: String!, $pr: Int!) {
+    repository(owner: $owner, name: $repo) {
+      pullRequest(number: $pr) {
+        reviewThreads(first: 100) {
+          nodes { id isResolved path line comments(first: 1) { nodes { databaseId body } } }
+        }
+      }
+    }
+  }
+' -f owner='{owner}' -f repo='{repo}' -F pr={pr_number}
+
+# Resolve a thread
+gh api graphql -f query='
+  mutation($threadId: ID!) {
+    resolveReviewThread(input: {threadId: $threadId}) {
+      thread { isResolved }
+    }
+  }
+' -f threadId='{thread_node_id}'
 ```
